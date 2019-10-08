@@ -1,1 +1,32 @@
-<p>posts works!</p>
+<mat-card class="margin-top-xl margin-right-xl margin-left-xl" #container>
+  <div> 
+    <form [formGroup]="postForm">
+      <mat-form-field>
+        <input
+          matInput
+          type="text"
+          placeholder="Enter post title"
+          formControlName="postTitle"
+          autoComplete = "false"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <textarea
+          class="margin-top-xs mat-h3"
+          matInput
+          rows="6"
+          formControlName="postMessage"
+          appearance="fill"
+          placeholder="Enter post content"
+        >
+        </textarea>
+      </mat-form-field>
+    </form>
+  </div>
+  <button class = "in-left" *ngIf = "mode ==='create'" mat-raised-button color="primary" (click)="addPost()">ADD</button>
+  <button class = "in-left" *ngIf = "mode ==='edit'" mat-raised-button color="primary" (click)="savePost()">SAVE</button>
+  <button class = "in-left margin-left-s" *ngIf = "mode ==='edit'" mat-button style = "color:red;" (click)="cancel()">CANCEL</button>
+
+</mat-card>
+
+<app-post-list (editPost)="editPost($event)"></app-post-list>

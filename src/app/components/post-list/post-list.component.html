@@ -1,0 +1,24 @@
+<div
+  class="margin-top-l margin-left-xl margin-right-xl margin-bottom-l flex align-center flex-column container"
+>
+  <p
+    class="mat-primary-text padding-top-l mat-h1 in-down"
+    *ngIf="!postList.length"
+  >
+    Your Posts will appear Here
+  </p>
+
+  <div class="post" *ngFor="let post of postList">
+    <mat-card
+      class=" in-up margin-left-s margin-top-m margin-bottom-m "
+      *ngIf="postList.length"
+    >
+      <p class="mat-h2">{{ post.title }}</p>
+      <p class="mat-h4 margin-top-xl">{{ post.content }}</p>
+      <mat-card-actions class = "flex flex-end">
+        <button mat-raised-button (click)="edit(post.id)" style="color:#3f51b5">EDIT</button>
+        <button mat-raised-button  color = "warn" (click) = "delete(post.id)">DELETE</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
