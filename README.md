@@ -1,6 +1,6 @@
 
 # Posts-App
-An application where users can write and see posts.
+An application created with Angular where users can write and see posts.
 
 
 ## Technologies Used
