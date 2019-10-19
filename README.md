@@ -16,7 +16,7 @@ An application created with Angular where users can write and see posts.
 - Simple and clean UI design.
 - Realtime update of posts.
 
-## Code Sample
+## Code Example
 
     updatePost(postId: string, postTitle: string, postContent: string) {
 	    const postData: IPost = {
@@ -34,11 +34,13 @@ An application created with Angular where users can write and see posts.
 	    this.changeInPost(true);
 	    });
     }
+    
+  Updates the existing post
+
 
 ## How to use ?
 
-
-  #### Prerequisites
+#### Prerequisites
 
   - An active internet connection.
   - Node & Npm.
