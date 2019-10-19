@@ -1,27 +1,60 @@
-# MEANApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.6.
+# Posts-App
+An application where users can write and see posts.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Technologies Used
+- HTML5
+- SCSS 
+- Angular
+- Typescript
+- Node.js
+- MongoDB
 
-## Code scaffolding
+## Features
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Simple and clean UI design.
+- Realtime update of posts.
 
-## Build
+## Code Sample
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+    updatePost(postId: string, postTitle: string, postContent: string) {
+	    const postData: IPost = {
+		    id: postId,
+		    title: postTitle,
+		    content: postContent
+	    };
+    
+	    this.http
+	    .put(`${this.servicesUrl}api/posts/${postId}`, postData)
+	    .subscribe(res => {    
+	    const oldIndex =  this.posts.findIndex(post => post.id === postId);
+	    this.posts[oldIndex] = postData;
+	    // console.log("After updating posts", this.posts);
+	    this.changeInPost(true);
+	    });
+    }
 
-## Running unit tests
+## How to use ?
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+  #### Prerequisites
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+  - An active internet connection.
+  - Node & Npm.
+  - Modern Browser such as Edge, Chrome, Safari, Firefox.
+  - Visual Studio Code.
 
-## Further help
+ #### Usage 
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+1. Download or clone the repository.
+2. cd into the directory.
+3. Install the required dependencies using `npm-install` 
+4. To start the server locally use `npm run start:server` ( make sure this is always running in a terminal or cmd)
+5. To start the project  use `npm run start`.
+
+
+## Credits
+
+**©** **Shubham Kumar Singh** | *2019*
+
