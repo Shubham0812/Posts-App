@@ -13,6 +13,8 @@ export class PostService {
   private postsUpdated = new BehaviorSubject(false);
   postState = this.postsUpdated.asObservable();
 
+  servicesUrl = "https://posts-service.herokuapp.com/";
+
   constructor(private http: HttpClient) {
     this.getPosts()
       .pipe(
@@ -42,7 +44,7 @@ export class PostService {
       title: postTitle,
       content: postContent
     };
-    this.http.post<any>("http://localhost:3000/api/posts", postData).subscribe(
+    this.http.post<any>(this.servicesUrl + "posts", postData).subscribe(
       data => {
         postData.id = data.id;
         this.posts.push(postData);
@@ -57,7 +59,7 @@ export class PostService {
 
   deletePost(postID: string) {
     return this.http
-      .delete(`http://localhost:3000/api/posts/${postID}`)
+      .delete(`${this.servicesUrl}api/posts/${postID}`)
       .subscribe(data => {
         this.posts = this.posts.filter(post => {
           return post.id !== postID;
@@ -73,7 +75,7 @@ export class PostService {
       content: postContent
     };
     this.http
-      .put(`http://localhost:3000/api/posts/${postId}`, postData)
+      .put(`${this.servicesUrl}api/posts/${postId}`, postData)
       .subscribe(res => {
         console.log("Res after post", res);
         const oldIndex = this.posts.findIndex(post => post.id === postId);
@@ -88,7 +90,7 @@ export class PostService {
   }
 
   getPosts(): Observable<any> {
-    return this.http.get("http://localhost:3000/api/posts");
+    return this.http.get(this.servicesUrl + "api/posts");
   }
 
   fetchPosts() {
