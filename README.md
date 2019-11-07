@@ -35,7 +35,7 @@ An application created with Angular where users can write and see posts.
 	    });
     }
     
-  Updates the existing post
+  Updates the existing post by retrieving the postID from Mongo.
 
 
 ## How to use ?
